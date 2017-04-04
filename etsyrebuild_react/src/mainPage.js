@@ -1,33 +1,49 @@
 import React from 'react'
 import Shipping from './shipping'
+import {getData} from './api/whiskey.js'
+import store from './store'
 
-export default React.createClass({
+
+class MainPage extends React.Component{
+  constructor() {
+    super()
+    this.state = {
+      dataAction: []
+    }
+  }
+
+  componentWillMount(){
+    store.subscribe(()=>{
+      const appState = store.getState()
+      console.log(appState)
+      this.setState ({
+        dataAction: appState.dataAction
+      })
+    })
+    getData()
+  }
 
 render(){
 	return(
 		<div id="wholepage">
+    <div>
+    {this.state.dataAction.map(action=>(
     		<main id="container">
       	<span>Top categories for "whiskey"</span>
     		<section className="section1">
           <div className="smaller">
-            <img  className="smallImg" src="http://placehold.it/275x200" alt='#'/>
+          <a href={action.url}>
+            <img className="smallImg" src={action.image}alt='#'/>
             <div id="imgText">
-              <h4 className="imgTitle">this is a long title to make sure it fits</h4>
-                <p id="maker">manufacturer</p>
-                <p id="pricing">price $2.00</p>
-            </div>
+              <h4 className="imgTitle">{action.title}</h4>
+                <p id="maker">{action.Shop.shop_name}</p>
+                <p id="pricing">{action.price}</p>
+            </div></a>
           </div>
-          <div className="smaller">
-            <img  className="smallImg" src="http://placehold.it/275x200" alt='#'/>
-            <div id="imgText">
-              <h4 className="imgTitle">this is a long title to make sure it fits</h4>
-                <p id="maker">manufacturer</p>
-                <p id="pricing">price $2.00</p>
-            </div>
-          </div>
-          
         </section>
     	</main>
+    ))}
+      </div>
     		<div className="leftmenu">
           <ul className="categories">
             <h4 className="lefth">All Categories</h4>
@@ -134,4 +150,6 @@ render(){
 
  	)
 	}
-})
+}
+
+export default MainPage

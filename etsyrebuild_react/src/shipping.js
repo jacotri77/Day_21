@@ -5,10 +5,10 @@ export default React.createClass({
 render(){
   return(
 
-<div class="shipping">
-  <h4 class="lefth">Ships to</h4>
+<div className="shipping">
+  <h4 className="lefth">Ships to</h4>
   <select name="country" id="country">
-  <option value="0" label="Select a country … " selected="selected">Select a country …       </option>
+  <option value="0" label="Select a country … " defaultValue="selected">Select a country …       </option>
   <optgroup id="country-optgroup-Africa" label="Africa">
     <option value="DZ" label="Algeria">Algeria</option>
     <option value="AO" label="Angola">Angola</option>

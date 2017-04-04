@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import normalize from '../normalize.css/normalize.css'
 import './index.css';
 import Header from './header'
 import Footer from './footer'
