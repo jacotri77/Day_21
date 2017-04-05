@@ -4,8 +4,8 @@ const initialState ={
 
 export default function (state= initialState, action){
 	switch(action.type){
-		case action.GET_DATA:
-		return{...state, action: action.dataAction}
+		case 'GET_DATA':
+		return{...state, dataAction: [...action.dataAction]}
 		default:
 			return state
 	}

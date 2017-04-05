@@ -4,7 +4,7 @@ import {getData} from './api/whiskey.js'
 import store from './store'
 
 
-class MainPage extends React.Component{
+class FullPage extends React.Component{
   constructor() {
     super()
     this.state = {
@@ -28,12 +28,13 @@ render(){
 		<div id="wholepage">
     <div>
     {this.state.dataAction.map(action=>(
-    		<main id="container">
+    		<main id="container" key={"whiskey"+action.creation_tsz}
+>
       	<span>Top categories for "whiskey"</span>
     		<section className="section1">
           <div className="smaller">
           <a href={action.url}>
-            <img className="smallImg" src={action.image}alt='#'/>
+            <img className="smallImg" src={action.Images[0].url_fullxfull}alt='#'/>
             <div id="imgText">
               <h4 className="imgTitle">{action.title}</h4>
                 <p id="maker">{action.Shop.shop_name}</p>
